@@ -29,6 +29,9 @@ int main()
     }
 
     window.clear();
-    if (ShouldShowOpening) window.draw(opening_background_sprite);
+    if (ShouldShowOpening)
+    {
+        window.draw(opening_background_sprite);
+    }
     window.display();
 }
