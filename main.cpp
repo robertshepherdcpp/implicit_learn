@@ -35,13 +35,13 @@ int main()
                 ShouldShowOpening = false;
             }
         }
-    }
 
-    window.clear();
-    if (ShouldShowOpening)
-    {
-        window.draw(opening_background_sprite);
+        window.clear();
+        if (ShouldShowOpening)
+        {
+            window.draw(opening_background_sprite);
+        }
+        window.draw(pong_ball_sprite);
+        window.display();
     }
-    window.draw(pong_ball_sprite);
-    window.display();
 }
