@@ -127,7 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CompSciObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MathsObject.cpp" />
+    <ClCompile Include="PhysicsObject.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CompSciObject.h" />
+    <ClInclude Include="MathsObject.h" />
+    <ClInclude Include="PhysicsObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

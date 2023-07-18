@@ -2,12 +2,20 @@
 
 #include<iostream>
 
+#include"MathsObject.h"
+#include"PhysicsObject.h"
+#include"CompSciObject.h"
+
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1920, 1001), "implicit learn");
 
     bool ShouldShowOpening = true;
     bool ShouldShowOptions = false;
+
+    MathsObject Maths;
+    PhysicsObject Physics;
+    CompSciObject CompSci;
 
     sf::Texture opening_background_texture;
     opening_background_texture.loadFromFile("implicit_learn.png");
@@ -47,26 +55,33 @@ int main()
             }
             else if (ShouldShowOptions)
             {
-                maths.setPosition(  450,  250);
-                physics.setPosition(850,  250);
-                compsci.setPosition(1250, 250);
+                maths.setPosition(  150 , 250);
+                physics.setPosition(750 , 250);
+                compsci.setPosition(1350, 250);
 
                 if (event.mouseButton.button == sf::Mouse::Left)
                 {
                     if (maths.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
                     {
                         std::cout << "Maths clicked!" << std::endl;
+                        Maths.Activate();
+                        ShouldShowOptions = false;
                     }
                     if (physics.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
                     {
                         std::cout << "Physics clicked!" << std::endl;
+                        Physics.Activate();
+                        ShouldShowOptions = false;
                     }
                     if (compsci.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
                     {
                         std::cout << "Compsci clicked!" << std::endl;
+                        CompSci.Activate();
+                        ShouldShowOptions = false;
                     }
                 }
             }
+            Maths.update(event);
         }
 
         window.clear();
@@ -80,6 +95,7 @@ int main()
             window.draw(physics);
             window.draw(compsci);
         }
+        Maths.draw(window);
         window.display();
     }
 }
