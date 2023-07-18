@@ -1,5 +1,7 @@
 #include<SFML/Graphics.hpp>
 
+#include<iostream>
+
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1920, 1001), "implicit learn");
@@ -12,6 +14,12 @@ int main()
     sf::Sprite opening_background_sprite;
     opening_background_sprite.setTexture(opening_background_texture);
 
+    sf::Texture pong_ball_texture;
+    pong_ball_texture.loadFromFile("pong_ball.png");
+
+    sf::Sprite pong_ball_sprite;
+    pong_ball_sprite.setTexture(pong_ball_texture);
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -21,8 +29,9 @@ int main()
             {
                 window.close();
             }
-            if (ShouldShowOpening && event.type == sf::Event::KeyPressed)
+            if ((ShouldShowOpening) && (event.type == sf::Event::KeyReleased))
             {
+                std::cout << "Window should close\n";
                 ShouldShowOpening = false;
             }
         }
@@ -33,5 +42,6 @@ int main()
     {
         window.draw(opening_background_sprite);
     }
+    window.draw(pong_ball_sprite);
     window.display();
 }
